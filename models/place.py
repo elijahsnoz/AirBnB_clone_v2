@@ -3,6 +3,8 @@
 from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
+from models.amenity import Amenity
+
 
 # Table for many-to-many relationship between Place and Amenity
 place_amenity = Table('place_amenity', Base.metadata,
