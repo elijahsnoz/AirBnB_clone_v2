@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Place Module for HBNB project """
+import models
 from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
@@ -38,7 +39,7 @@ class Place(BaseModel, Base):
         from models import storage
         from models.amenity import Amenity
         all_amenities = storage.all(Amenity)
-        place_amenities = [amenity for amenity in all_amenities.values() if amenity.id in self.amenity_ids]
+        place_amenities = [amenity for amenity in models.all(Amenity) if amenity.place_id in self.id]
         return place_amenities
 
     @amenities.setter
