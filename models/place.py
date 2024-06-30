@@ -35,6 +35,7 @@ class Place(BaseModel, Base):
     def amenities(self):
         """Getter attribute that returns the list of Amenity instances based on the attribute amenity_ids"""
         from models import storage
+        from models.amenity import Amenity
         all_amenities = storage.all(Amenity)
         place_amenities = [amenity for amenity in all_amenities.values() if amenity.id in self.amenity_ids]
         return place_amenities
