@@ -120,12 +120,12 @@ class HBNBCommand(cmd.Cmd):
             if len(class_name) == 0:
                 print("** class name missing **")
                 return
-            if class_name and class_name not in self.valid_classes:
+            if class_name and class_name not in self.classes:
                 print("** class doesn't exist **")
                 return
 
             kwargs = {}
-            commands = arg.split(" ")
+            commands = args.split(" ")
             for i in range(1, len(commands)):
                 
                 key = commands[i].split("=")[0]
