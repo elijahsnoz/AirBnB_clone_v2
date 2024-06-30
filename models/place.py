@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Place Module for HBNB project."""
 import models
+from os import getenv
 from models.base_model import Base, BaseModel
 from models.review import Review
 from models.amenity import Amenity
@@ -31,7 +32,7 @@ class Place(BaseModel, Base):
     longitude = Column(Float, nullable=True)
     amenity_ids = []
 
-    if models.storage_type == "db":
+    if getenv('HBNB_TYPE_STORAGE') == "db":
         reviews = relationship("Review", backref="place", cascade="delete")
         amenities = relationship("Amenity", secondary="place_amenity",
                 back_populates="place_amenities", viewonly=False)
