@@ -32,10 +32,8 @@ class Place(BaseModel, Base):
     longitude = Column(Float, nullable=True)
     user = relationship("User", back_populates="places")
     city = relationship("City", back_populates="places")
-    reviews = relationship("Review", back_populates="place",
-                           cascade="all, delete, delete-orphan")
-    amenities = relationship("Amenity", secondary=place_amenity,
-                             viewonly=False, back_populates="place_amenities")
+    reviews = relationship("Review", back_populates="place", cascade="all, delete, delete-orphan")
+    amenities = relationship("Amenity", secondary=place_amenity, viewonly=False, back_populates="place_amenities")
 
     @property
     def amenities(self):
